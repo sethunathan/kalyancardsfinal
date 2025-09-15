@@ -14,7 +14,7 @@ Route::post('/register', [AuthController::class, 'Register']);
  
 Route::post('/loginn', [AuthController::class, 'loginn']);
 Route::get('/test',function (Request $request) {
-    print('test');
+    print('testr');
 });
 
     
