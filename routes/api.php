@@ -17,7 +17,8 @@ Route::get('/test',function (Request $request) {
     print('test');
 });
 
-return response()->json($data)
-       ->header("Access-Control-Allow-Origin", "*")
-       ->header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS")
-       ->header("Access-Control-Allow-Headers", "Content-Type, Authorization");
+    
+ Route::get('/hello', function () {
+    return response()->json(['message' => 'Hello from Laravel API']);
+});
+ 

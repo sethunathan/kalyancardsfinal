@@ -19,7 +19,9 @@ return [
 
     'allowed_methods' => ['*'],
 
-    'allowed_origins' => ['http://192.168.1.14:8000'],
+    //'allowed_origins' => ['http://192.168.1.14:8000'],
+
+    'allowed_origins' => ['*'],
 
    // 'paths' => ['api/*'],
 //'allowed_methods' => ['*'],
