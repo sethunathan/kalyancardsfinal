@@ -28,3 +28,5 @@ Route::post('/hello', function (Request $request) {
         'data' => $request->all()
     ]);
 });
+
+Route::get('/images', [ImageController::class, 'getImages']);
