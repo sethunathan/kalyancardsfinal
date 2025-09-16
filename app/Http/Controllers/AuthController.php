@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 
 use App\Models\User;
+use App\Models\Posts;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -13,7 +14,7 @@ use Illuminate\Validation\ValidationException;
 class AuthController extends Controller
 {
 
-    public function getImages()
+    public function getImagesfile()
 {
     //public/uploads/photo1.jpg
     //public/uploads/photo2.jpg
@@ -34,6 +35,44 @@ class AuthController extends Controller
 
     return response()->json($images);
 }
+
+  public function getImages()
+{
+    //public/uploads/photo1.jpg
+    //public/uploads/photo2.jpg
+    
+   // $path = base_path('uploads/thumbnail');
+    //$files = File::files($path);//  $files = \File::files(base_path('uploads')); 
+    //if (!File::exists($path)) {
+      //      return response()->json(['error' => 'Uploads folder not found'], 404);
+       // }
+    //$images = [];
+    //foreach ($files as $file) {
+       // $images[] = [
+       //     'name' => $file->getFilename(),
+         //   'url'  => asset('uploads/thumbnail/'.$file->getFilename()),
+       // ];
+
+
+        $posts = Posts::all();
+
+        $data = $posts->map(function($post) {
+            return [
+                'id'      => $post->id,
+                'title'   => $post->title,
+                'thumb_url' => $post->thumb_url,
+                'folder_name'   => $post->thumb_url, // URL for Flutter
+                'thumbnailimage'   => asset('uploads/thumbnail/'.$post->item_url), // URL for Flutter
+            ];
+        });
+
+        return response()->json($data);
+
+    }
+    //'url' => asset('uploads/thumbnail/'.$file->getFilename()), url('uploads/thumbnail/'.$file->getFilename()),
+
+   // return response()->json($images);
+//}
 
       public function register(Request $request)
     {
