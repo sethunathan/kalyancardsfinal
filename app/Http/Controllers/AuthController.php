@@ -62,7 +62,7 @@ class AuthController extends Controller
                 'title'   => $post->title,
                 'thumb_url' => $post->thumb_url,
                 'folder_name'   => $post->thumb_url, // URL for Flutter
-                'thumbnailimage'   => asset('uploads/thumbnail/'.$post->item_url), // URL for Flutter
+                'thumbnailimage'   => asset($post->item_url), // URL for Flutter
             ];
         });
 
