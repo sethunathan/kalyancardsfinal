@@ -54,18 +54,24 @@ class AuthController extends Controller
        // ];
 
 
-        $posts = Posts::all(); 
-        $data = $posts->map(function($post) {
+         $posts = Posts::paginate(20);
+         $data = $posts->map(function($post) {
             return [
                 'id'      => $post->id,
                 'title'   => $post->title,
                 'thumb_url' => $post->thumb_url,
-                'thumbnail' => asset('uploads/thumbnail/'.$post->thumb_url), // ✅ thumbnail URL
+                'thumbnail' => asset($post->thumb_url), // ✅ thumbnail URL
                 'image'     => asset($post->item_url),    
             ];
         });
            // $path = base_path('uploads/posts/'.$filename);
-        return response()->json($data);
+          return response()->json([
+        'current_page' => $posts->currentPage(),
+        'last_page'    => $posts->lastPage(),
+        'per_page'     => $posts->perPage(),
+        'total'        => $posts->total(),
+        'data'         => $data,
+    ]);
 
     }
     //'url' => asset('uploads/thumbnail/'.$file->getFilename()), url('uploads/thumbnail/'.$file->getFilename()),
