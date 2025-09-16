@@ -12,6 +12,23 @@ use Illuminate\Validation\ValidationException;
 class AuthController extends Controller
 {
 
+    public function getImages()
+{
+    //public/uploads/photo1.jpg
+    //public/uploads/photo2.jpg
+
+    $files = \File::files(public_path('uploads'));
+
+    $images = [];
+    foreach ($files as $file) {
+        $images[] = [
+            "url" => url('uploads/' . $file->getFilename()),
+        ];
+    }
+
+    return response()->json($images);
+}
+
       public function register(Request $request)
     {
         $request->validate([
