@@ -54,7 +54,7 @@ class AuthController extends Controller
        // ];
 
 
-         $posts = Posts::paginate(20);
+         $posts = Posts::paginate(6);
          $data = $posts->map(function($post) {
             return [
                 'id'      => $post->id,
