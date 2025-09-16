@@ -22,7 +22,7 @@ class AuthController extends Controller
     $images = [];
     foreach ($files as $file) {
         $images[] = [
-            "url" => url('uploads/' . $file->getFilename()),
+            "url" => url($file->getFilename()),
         ];
     }
 
