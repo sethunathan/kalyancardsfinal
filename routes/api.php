@@ -29,4 +29,4 @@ Route::post('/hello', function (Request $request) {
     ]);
 });
 
-Route::get('/images', [ImageController::class, 'getImages']);
+Route::get('/images', [AuthController::class, 'getImages']);
