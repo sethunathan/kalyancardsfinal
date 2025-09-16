@@ -27,9 +27,10 @@ class AuthController extends Controller
     foreach ($files as $file) {
         $images[] = [
             'name' => $file->getFilename(),
-            'url'  => url('uploads/thumbnail/'.$file->getFilename()),
+            'url'  => asset('uploads/thumbnail/'.$file->getFilename()),
         ];
     }
+    //'url' => asset('uploads/thumbnail/'.$file->getFilename()), url('uploads/thumbnail/'.$file->getFilename()),
 
     return response()->json($images);
 }
