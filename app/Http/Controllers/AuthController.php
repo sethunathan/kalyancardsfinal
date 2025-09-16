@@ -17,7 +17,7 @@ class AuthController extends Controller
     //public/uploads/photo1.jpg
     //public/uploads/photo2.jpg
 
-    $files = \File::files(public_path('uploads'));
+    $files = \File::files(base_path('uploads'));
 
     $images = [];
     foreach ($files as $file) {
