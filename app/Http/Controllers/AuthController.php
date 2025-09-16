@@ -54,15 +54,14 @@ class AuthController extends Controller
        // ];
 
 
-        $posts = Posts::all();
-
+        $posts = Posts::all(); 
         $data = $posts->map(function($post) {
             return [
                 'id'      => $post->id,
                 'title'   => $post->title,
                 'thumb_url' => $post->thumb_url,
-                'folder_name'   => $post->thumb_url, // URL for Flutter
-                'thumbnailimage'   =>base_path('uploads/posts/'.$post->thumb_url), // URL for Flutter 
+                'thumbnail' => asset('uploads/thumbnail/'.$post->thumb_url), // ✅ thumbnail URL
+                'image'     => asset('uploads/posts/'.$post->item_url),    
             ];
         });
            // $path = base_path('uploads/posts/'.$filename);
