@@ -61,7 +61,7 @@ class AuthController extends Controller
                 'title'   => $post->title,
                 'thumb_url' => $post->thumb_url,
                 'thumbnail' => asset('uploads/thumbnail/'.$post->thumb_url), // ✅ thumbnail URL
-                'image'     => asset('uploads/posts/'.$post->item_url),    
+                'image'     => asset($post->item_url),    
             ];
         });
            // $path = base_path('uploads/posts/'.$filename);
