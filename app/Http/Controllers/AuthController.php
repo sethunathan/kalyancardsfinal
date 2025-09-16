@@ -17,8 +17,11 @@ class AuthController extends Controller
     //public/uploads/photo1.jpg
     //public/uploads/photo2.jpg
     
-    $path = base_path('uploads');
+    $path = base_path('uploads/thumbnail');
     $files = File::files($path);//  $files = \File::files(base_path('uploads')); 
+    if (!File::exists($path)) {
+            return response()->json(['error' => 'Uploads folder not found'], 404);
+        }
     $images = [];
     foreach ($files as $file) {
         $images[] = [
